@@ -12,11 +12,21 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        // Step 1: Create an array with enough space for the number of multiples requested.
+        double[] multiples = new double[length];
 
-        return []; // replace this return statement with your own
+        // Step 2: Loop through each position in the array.
+        for (int i = 0; i < length; i++)
+        {
+            // Step 3: Calculate the multiple by multiplying the starting number
+            // by the current position plus 1.
+            multiples[i] = number * (i + 1);
+        }
+
+        // Step 4: Return the completed array.
+        return multiples;
     }
 
-    /// <summary>
     /// Rotate the 'data' to the right by the 'amount'.  For example, if the data is 
     /// List<int>{1, 2, 3, 4, 5, 6, 7, 8, 9} and an amount is 3 then the list after the function runs should be 
     /// List<int>{7, 8, 9, 1, 2, 3, 4, 5, 6}.  The value of amount will be in the range of 1 to data.Count, inclusive.
@@ -29,5 +39,23 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        // Step 1: Find the index where the last 'amount' elements begin.
+        int splitIndex = data.Count - amount;
+
+        // Step 2: Get the last 'amount' elements from the list.
+        List<int> lastPart = data.GetRange(splitIndex, amount);
+
+        // Step 3: Get all the elements before the last 'amount' elements.
+        List<int> firstPart = data.GetRange(0, splitIndex);
+
+        // Step 4: Remove all elements from the original list.
+        data.Clear();
+
+        // Step 5: Add the last part to the beginning of the list.
+        data.AddRange(lastPart);
+
+        // Step 6: Add the first part after the last part.
+        data.AddRange(firstPart);
+
     }
 }
